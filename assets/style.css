@@ -57,11 +57,26 @@ body {
     margin-bottom: 20px;
 }
 
-.btn:hover {
+.btn:hover:not([disabled]) {
     background: dodgerblue;
     color: white;
 }
 
+.btn:disabled{
+    cursor: no-drop;
+}
+
 #submit {
     text-align: center;
+}
+
+
+.correct {
+    background: rgb(50, 213, 50);
+    color: white;
+}
+
+.incorrect {
+    background: crimson;
+    color: white;
 }
