@@ -10,8 +10,13 @@
 <body>
     <div class="app">
         <h1>Coding Quiz</h1>
-        <p id="timer">0:00</p>
-        <div class="quiz">
+        <div id="intro">
+            <h3>Welcome To Your JS Quiz</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde eum voluptate saepe deserunt omnis, architecto quod ut quia, iste corrupti voluptas, voluptatem aliquam! Vitae ipsa quis debitis laborum placeat nihil?</p>
+            <button class="btn" id="start-button">Start Quiz</button>
+        </div>
+        <div id="quiz-content" class="hide">
+            <p id="timer">0:00</p>
             <h2 id="question">Question Goes Here</h2>
             <div id="answer-buttons">
                 <button class="btn">Answer 1</button>
@@ -19,7 +24,7 @@
                 <button class="btn">Answer 1</button>
                 <button class="btn">Answer 1</button>
             </div>
-        <button class="btn" id="submit">Submit</button>
+            <button class="btn" id="submit">Submit</button>
         </div>
     </div>
 <script src="/assets/script.js"></script>

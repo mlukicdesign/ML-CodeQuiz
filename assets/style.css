@@ -70,6 +70,12 @@ body {
     text-align: center;
 }
 
+#timer {
+    color: dodgerblue;
+    font-size: 18px;
+    font-weight: 800;
+}
+
 
 .correct {
     background: rgb(50, 213, 50);
@@ -79,4 +85,10 @@ body {
 .incorrect {
     background: crimson;
     color: white;
+}
+
+
+
+.hide {
+    display: none;
 }

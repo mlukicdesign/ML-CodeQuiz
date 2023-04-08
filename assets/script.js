@@ -35,6 +35,9 @@ const questions = [
 const questionElement = document.getElementById('question');
 const answerButton = document.getElementById('answer-buttons')
 const nextElement = document.getElementById('submit');
+const startButton = document.getElementById('start-button');
+const quizContent = document.getElementById('quiz-content');
+const introduction = document.getElementById('intro');
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -50,7 +53,7 @@ let secondsLeft = 30;
 function startTimer() {
     let timerId = setInterval(function() {
         secondsLeft--;
-        timerEl.textContent = secondsLeft + "seconds left";
+        timerEl.textContent = secondsLeft + " seconds left";
 
         if(secondsLeft === 0) {
             clearInterval(timerId);
@@ -62,11 +65,13 @@ function startTimer() {
 //Initialize Quiz
 
 function startQuiz(){
+    console.log('quiz has started')
+    quizContent.classList.remove('hide');
+    introduction.classList.add('hide');
     currentQuestionIndex = 0;
     score = 0;
     submit.innerHTML = "Next";
     showQuestion();
-    startTimer();
 }
 
 // Show Question 
@@ -105,6 +110,7 @@ function selectAnswer(e){
     if(isCorrect){
         selectedBtn.classList.add("correct");
         score++;
+        secondsLeft += 5;
     }else{
         selectedBtn.classList.add("incorrect");
     }
@@ -119,6 +125,7 @@ function selectAnswer(e){
 
 
 function showScore(){
+    clearInterval(timerId);
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
     submit.innerHTML = "Play Again?";
@@ -150,5 +157,7 @@ console.log(score)
 
 //Run Quiz Function
 
-startQuiz();
 
+//startTimer();
+
+startButton.addEventListener('click', startQuiz);
