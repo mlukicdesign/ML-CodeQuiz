@@ -72,6 +72,7 @@ function startQuiz(){
     score = 0;
     submit.innerHTML = "Next";
     showQuestion();
+    startTimer();
 }
 
 // Show Question 
@@ -125,7 +126,6 @@ function selectAnswer(e){
 
 
 function showScore(){
-    clearInterval(timerId);
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
     submit.innerHTML = "Play Again?";
@@ -152,12 +152,11 @@ submit.addEventListener("click", ()=>{
     }
 })
 
-
-console.log(score)
-
 //Run Quiz Function
 
 
-//startTimer();
+//Start Quiz
 
-startButton.addEventListener('click', startQuiz);
+startButton.addEventListener('click', startQuiz, startTimer);
+
+// Store Locally
