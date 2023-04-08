@@ -38,6 +38,8 @@ const nextElement = document.getElementById('submit');
 const startButton = document.getElementById('start-button');
 const quizContent = document.getElementById('quiz-content');
 const introduction = document.getElementById('intro');
+const wpmDisplay = document.getElementById("wpm-display");
+const scoreDisplay = document.getElementById("score-display");
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -130,6 +132,8 @@ function showScore(){
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
     submit.innerHTML = "Play Again?";
     submit.style.display = "block";
+    const scores = JSON.parse(localStorage.getItem('highscores')) || [];
+    scores.push(wpmDisplay.textContent);
 }
 
 

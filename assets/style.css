@@ -11,10 +11,11 @@ body {
 
 p {
     color: dodgerblue;
-    padding: 30px 0px;
+    padding: 20px 0px;
 }
 
 h2 {
+    padding-top: 20px;
     font-weight: 600;
     color: dodgerblue;
     padding-bottom: 20px;
@@ -24,8 +25,7 @@ h2 {
     background-color: aliceblue;
     width: 90%;
     max-width: 800px;
-    max-width: 600px;
-    margin: 100px auto 0;
+    margin: 50px auto 0;
     border-radius: 20px;
     padding: 30px;
 }
@@ -102,4 +102,16 @@ h2 {
 
 .hide {
     display: none;
+}
+
+#high-scores {
+    color: dodgerblue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#high-scores:hover {
+    color: dodgerblue;
+    cursor: pointer;
+    text-decoration: underline;
 }
