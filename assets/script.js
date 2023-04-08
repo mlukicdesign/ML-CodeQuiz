@@ -38,31 +38,27 @@ const nextElement = document.getElementById('submit');
 const startButton = document.getElementById('start-button');
 const quizContent = document.getElementById('quiz-content');
 const introduction = document.getElementById('intro');
-const wpmDisplay = document.getElementById("wpm-display");
-const scoreDisplay = document.getElementById("score-display");
+
 
 let currentQuestionIndex = 0;
 let score = 0;
 
 
+//Local Storage
 
 
 // Timer Function
 
-let timerEl = document.getElementById('timer');
-let secondsLeft = 30;
+let secondsLeft = 60;
 
-function startTimer() {
+
+/* function startTimer() {
+    let timerEl = document.getElementById('timer');
     let timerId = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = secondsLeft + " seconds left";
-
-        if(secondsLeft === 0) {
-            clearInterval(timerId);
-          /* Sends Message */
-        }
     }, 1000)
-}
+} */
 
 //Initialize Quiz
 
@@ -73,6 +69,7 @@ function startQuiz(){
     currentQuestionIndex = 0;
     score = 0;
     submit.innerHTML = "Next";
+    timer.classList.remove("hide");
     showQuestion();
     startTimer();
 }
@@ -107,15 +104,32 @@ function resetState(){
     }
 }
 
+
+/* function selectAnswer:
+    get the selected button
+    check if the answer is correct
+    if answer is correct:
+    add "correct" class to the selected button
+    increase score by 1
+    add 5 seconds to timer
+    else:
+    add "incorrect" class to the selected button
+    subtract 5 seconds from timer
+    disable all answer buttons and show correct answer
+    show the next button */
+
+    
+
 function selectAnswer(e){
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
     if(isCorrect){
         selectedBtn.classList.add("correct");
         score++;
-        secondsLeft += 5;
+        // secondsLeft += 5;
     }else{
         selectedBtn.classList.add("incorrect");
+        // secondsLeft -= 5;
     }
     Array.from(answerButton.children).forEach(button => {
         if(button.dataset.correct === "true"){
@@ -126,14 +140,23 @@ function selectAnswer(e){
     submit.style.display = "block";
 }
 
+/* function showScore:
+    reset the quiz state
+    display the final score
+    show the "Play Again?" button
+    get the saved scores from local storage or initialize an empty array
+    create an object with the current score and remaining time
+    add the new score object to the scores array
+    save the updated scores array to local storage 
+*/
 
 function showScore(){
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
     submit.innerHTML = "Play Again?";
     submit.style.display = "block";
-    const scores = JSON.parse(localStorage.getItem('highscores')) || [];
-    scores.push(wpmDisplay.textContent);
+    timer.classList.add("hide");
+    console.log(score);
 }
 
 
@@ -161,6 +184,6 @@ submit.addEventListener("click", ()=>{
 
 //Start Quiz
 
-startButton.addEventListener('click', startQuiz, startTimer);
+startButton.addEventListener('click', startQuiz);
 
 // Store Locally
