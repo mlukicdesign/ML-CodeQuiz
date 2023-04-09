@@ -1,6 +1,6 @@
 
 
-let score = localStorage.getItem('score');
+// let score = localStorage.getItem('score');
 let highscoresList = document.getElementById('highscores');
 
 for (let i = 0; i < localStorage.length; i++) {
@@ -15,7 +15,7 @@ for (let i = 0; i < localStorage.length; i++) {
 
 
 // retrieve the highscores from local storage. if it is empty, set it to an empty array
-score = JSON.parse(localStorage.getItem("highscores")) || [];
+
 
 /* rank the score from high to low
 score = score.sort().reverse();

@@ -49,13 +49,14 @@ const questions = [
 ];
 
 // Define Quiz Element Variables
-
+const submit = document.getElementById('submit');
 const questionElement = document.getElementById('question');
 const answerButton = document.getElementById('answer-buttons')
 const nextElement = document.getElementById('submit');
 const startButton = document.getElementById('start-button');
 const quizContent = document.getElementById('quiz-content');
 const introduction = document.getElementById('intro');
+
 
 
 let currentQuestionIndex = 0;
@@ -175,7 +176,7 @@ function showScore(){
     submit.style.display = "block";
     timer.classList.add("hide");
     // localStorage.setItem('score', score);
-    localStorage.setItem("score", JSON.stringify(score));
+    localStorage.setItem('score', JSON.stringify(score));
     // console.log(score);
 }
 
@@ -191,7 +192,7 @@ function handleNextButton(){
 }
 
 
-submit.addEventListener("click", ()=>{
+submit.addEventListener("click", () => {
     if(currentQuestionIndex < questions.length){
         handleNextButton();
     }else{
