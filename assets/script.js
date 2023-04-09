@@ -27,6 +27,24 @@ const questions = [
             { text: "node.js", correct: false},
             { text: "node.js", correct: false},
         ]  
+    },
+    {
+        question: "Question 3",
+        answers: [
+            { text: "node.js", correct: false},
+            { text: "css", correct: true},
+            { text: "node.js", correct: false},
+            { text: "node.js", correct: false},
+        ]  
+    },
+    {
+        question: "Question 3",
+        answers: [
+            { text: "node.js", correct: false},
+            { text: "css", correct: true},
+            { text: "node.js", correct: false},
+            { text: "node.js", correct: false},
+        ]  
     }
 ];
 
@@ -118,7 +136,7 @@ function resetState(){
     disable all answer buttons and show correct answer
     show the next button */
 
-    
+
 
 function selectAnswer(e){
     const selectedBtn = e.target;
@@ -156,7 +174,9 @@ function showScore(){
     submit.innerHTML = "Play Again?";
     submit.style.display = "block";
     timer.classList.add("hide");
-    console.log(score);
+    // localStorage.setItem('score', score);
+    localStorage.setItem("score", JSON.stringify(score));
+    // console.log(score);
 }
 
 
@@ -187,3 +207,7 @@ submit.addEventListener("click", ()=>{
 startButton.addEventListener('click', startQuiz);
 
 // Store Locally
+
+
+
+console.log('score');
