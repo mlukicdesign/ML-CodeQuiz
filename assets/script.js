@@ -56,7 +56,8 @@ const nextElement = document.getElementById('submit');
 const startButton = document.getElementById('start-button');
 const quizContent = document.getElementById('quiz-content');
 const introduction = document.getElementById('intro');
-
+let highScore = 0
+let timerEl = document.getElementById('timer');
 
 
 let currentQuestionIndex = 0;
@@ -65,17 +66,21 @@ let score = 0;
 
 
 
-/* Timer Function
+// Timer Function
 
 let secondsLeft = 60;
 
  function startTimer() {
-    let timerEl = document.getElementById('timer');
-    let timerId = setInterval(function() {
-        secondsLeft--;
-        timerEl.textContent = secondsLeft + " seconds left";
+     let timerId = setInterval(function() {
+        timerEl.textContent=secondsLeft + " seconds left.";
+        if (secondsLeft > 0){
+            secondsLeft--;
+        }else{
+            highScore = secondsLeft
+            clearInterval(timerId)
+        }
     }, 1000)
-} */
+} 
 
 //Initialize Quiz
 
@@ -173,12 +178,21 @@ function showScore(){
     submit.innerHTML = "Play Again?";
     submit.style.display = "block";
     timer.classList.add("hide");
+    document.getElementById("high-scores").classList.remove('hide');
     // localStorage.setItem('score', score);
-    localStorage.setItem('score', JSON.stringify(score));
+    
     // console.log(score);
 }
 
+const storageItem = JSON.parse(window.localStorage.getItem('high-scores')) || [];
+storageItem.push({initials, score});
 
+document.querySelector("#initialsBtn").addEventListener("click", function (event){
+    event.preventDefault()
+    let initials = document.querySelector('#initialsInput').value
+    console.log(initials)
+    window.localStorage.setItem('high-score', JSON.stringify(storageItem));
+});
 
 function handleNextButton(){
     currentQuestionIndex++;

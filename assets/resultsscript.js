@@ -1,16 +1,17 @@
 
 
-// let score = localStorage.getItem('score');
+let score = JSON.parse(localStorage.getItem('high-score'));
 let highscoresList = document.getElementById('highscores');
 
-for (let i = 0; i < localStorage.length; i++) {
-  let key = localStorage.key(i);
-  if (key.startsWith('score')) {
-    let score = localStorage.getItem(key);
+
+for (let i = 0; i < score.length; i++) {
+//   let key = localStorage.key(i);
+//   if (key.startsWith('score')) {
+    // let score = localStorage.getItem(key);
     let newListItem = document.createElement('li');
-    newListItem.textContent = score;
-    highscoresList.appendChild(newListItem);
-  }
+    newListItem.innerHTML = `initials: ${score[i].initials} - ${score[i].score}`;
+    highscoresList.append(newListItem);
+//   }
 }
 
 
