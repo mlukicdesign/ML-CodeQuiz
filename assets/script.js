@@ -1,4 +1,4 @@
-//Questions Arrays
+
 
 const questions = [
     {
@@ -184,14 +184,13 @@ function showScore(){
     // console.log(score);
 }
 
-const storageItem = JSON.parse(window.localStorage.getItem('high-scores')) || [];
-storageItem.push({initials, score});
-
 document.querySelector("#initialsBtn").addEventListener("click", function (event){
     event.preventDefault()
     let initials = document.querySelector('#initialsInput').value
     console.log(initials)
-    window.localStorage.setItem('high-score', JSON.stringify(storageItem));
+    const storageItem = JSON.parse(window.localStorage.getItem('high-scores')) || [];
+    storageItem.push({initials, score});
+    window.localStorage.setItem('high-scores', JSON.stringify(storageItem));
 });
 
 function handleNextButton(){

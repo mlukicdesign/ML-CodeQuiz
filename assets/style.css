@@ -30,6 +30,15 @@ h2 {
     padding: 30px;
 }
 
+.app_scores {
+    background-color: aliceblue;
+    width: 50%;
+    max-width: 400px;
+    margin: 50px auto 0;
+    border-radius: 20px;
+    padding: 30px;
+}
+
 .app h1 {
     font-size: 35px;
     color: dodgerblue;
@@ -85,6 +94,7 @@ h2 {
     color: dodgerblue;
     font-size: 18px;
     font-weight: 800;
+    text-align: center;
 }
 
 
@@ -108,10 +118,55 @@ h2 {
     color: dodgerblue;
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
 }
 
 #high-scores:hover {
     color: dodgerblue;
     cursor: pointer;
     text-decoration: underline;
+}
+
+#initialsInput {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 30px 20px;
+    color: dodgerblue;
+    border: solid 1px dodgerblue;
+    border-radius: 20px;
+    border-radius: 20px;
+}
+
+#backBtn {
+    display: block;
+    background: white;
+    color: dodgerblue;
+    font-weight: 300;
+    padding: 20px 20px;
+    width: 50%;
+    text-align: center;
+    border: solid 1px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#backBtn:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+a  {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+#highscores {
+    color: dodgerblue;
+    justify-content: center;
+}
+
+
+.highscoresdiv {
+    text-align: center;
+    width: 100%;
 }
