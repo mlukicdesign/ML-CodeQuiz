@@ -63,15 +63,13 @@ let currentQuestionIndex = 0;
 let score = 0;
 
 
-//Local Storage
 
 
-// Timer Function
+/* Timer Function
 
 let secondsLeft = 60;
 
-
-/* function startTimer() {
+ function startTimer() {
     let timerEl = document.getElementById('timer');
     let timerId = setInterval(function() {
         secondsLeft--;
