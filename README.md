@@ -3,6 +3,7 @@
 ---
 
 Please view the deployed application via the link below:
+https://mlukicdesign.github.io/ML-CodeQuiz/
 
 <img src="assets/images/applicationscreenshot.png">
 
