@@ -1,8 +1,8 @@
-
+// Application Question Arrays
 
 const questions = [
     {
-        question: "Which is a frontend language?",
+        question: "Which is a considered a frontend language?",
         answers: [
             { text: "C#", correct: false},
             { text: "css", correct: true},
@@ -11,39 +11,39 @@ const questions = [
         ]
     },
     {
-        question: "Question 2",
+        question: "Inside which HTML element do we put the JavaScript?",
         answers: [
-            { text: "node.js", correct: false},
-            { text: "css", correct: true},
-            { text: "node.js", correct: false},
-            { text: "node.js", correct: false},
+            { text: "Script", correct: true},
+            { text: "Javscript", correct: false},
+            { text: "js", correct: false},
+            { text: "Scripting", correct: false},
         ]
     },
     {
-        question: "Question 3",
+        question: "Where is the correct place to insert JavaScript?",
         answers: [
-            { text: "node.js", correct: false},
-            { text: "css", correct: true},
-            { text: "node.js", correct: false},
-            { text: "node.js", correct: false},
+            { text: "Both the head section and the body section are correct", correct: false},
+            { text: "The body section", correct: true},
+            { text: "The head section", correct: false},
+            { text: "The meta section", correct: false},
         ]  
     },
     {
-        question: "Question 3",
+        question: "How can you add a comment in a JavaScript file?",
         answers: [
-            { text: "node.js", correct: false},
-            { text: "css", correct: true},
-            { text: "node.js", correct: false},
-            { text: "node.js", correct: false},
+            { text: "!--This is a comment--", correct: false},
+            { text: "'This is a comment'", correct: false},
+            { text: ".comment", correct: false},
+            { text: "//This is a comment", correct: true},
         ]  
     },
     {
-        question: "Question 3",
+        question: "Which event occurs when the user clicks on an HTML element?",
         answers: [
-            { text: "node.js", correct: false},
-            { text: "css", correct: true},
-            { text: "node.js", correct: false},
-            { text: "node.js", correct: false},
+            { text: "onmouseover", correct: false},
+            { text: "onmouseclick", correct: true},
+            { text: "onclick", correct: false},
+            { text: "onchange", correct: false},
         ]  
     }
 ];
@@ -68,13 +68,15 @@ let score = 0;
 
 // Timer Function
 
-let secondsLeft = 60;
+let secondsLeft = 30;
 
  function startTimer() {
      let timerId = setInterval(function() {
         timerEl.textContent=secondsLeft + " seconds left.";
         if (secondsLeft > 0){
             secondsLeft--;
+        } else if (secondsLeft === 0){
+            showScore();
         }else{
             highScore = secondsLeft
             clearInterval(timerId)
@@ -119,6 +121,7 @@ function showQuestion(){
     });
 }
 
+
 function resetState(){
     submit.style.display = "none";
     while(answerButton.firstChild){
@@ -148,10 +151,10 @@ function selectAnswer(e){
     if(isCorrect){
         selectedBtn.classList.add("correct");
         score++;
-        // secondsLeft += 5;
+        secondsLeft += 5;
     }else{
         selectedBtn.classList.add("incorrect");
-        // secondsLeft -= 5;
+        secondsLeft -= 5;
     }
     Array.from(answerButton.children).forEach(button => {
         if(button.dataset.correct === "true"){
@@ -184,13 +187,20 @@ function showScore(){
     // console.log(score);
 }
 
-document.querySelector("#initialsBtn").addEventListener("click", function (event){
-    event.preventDefault()
+
+
+
+// Submit Initials and add to highscore UL
+
+document.querySelector("#initialsBtn").addEventListener("click", function (event) {
+    event.preventDefault();
     let initials = document.querySelector('#initialsInput').value
     console.log(initials)
     const storageItem = JSON.parse(window.localStorage.getItem('high-scores')) || [];
     storageItem.push({initials, score});
     window.localStorage.setItem('high-scores', JSON.stringify(storageItem));
+    document.getElementById("score-message").classList.remove("hide");
+    document.querySelector("#initialsBtn").classList.add("hide");
 });
 
 function handleNextButton(){
@@ -201,6 +211,7 @@ function handleNextButton(){
         showScore();
     }
 }
+
 
 
 submit.addEventListener("click", () => {
