@@ -11,21 +11,6 @@ for (let i = 0; i < score.length; i++) {
     // String(i + 1) + ") " + score[i]
     newListItem.innerHTML = `Name: ${score[i].initials} | score:${score[i].score}`;
     highscoresList.append(newListItem);
-
 }
 
 
-
-/* rank the score from high to low
-score = score.sort().reverse();
-
-for (let index = 0; index < score.length; index++) {
-    // create list item
-    const li = createListItem(
-        String(index + 1) + ") " + score[index]
-    );
-
-    // put them in ul
-    highscores.appendChild(li);
-}
-*/
